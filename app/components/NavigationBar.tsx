@@ -66,12 +66,12 @@ export const NavigationBar = () => {
 
         {/* Mobile Menu */}
         <div 
-          className={`fixed left-0 right-0 top-[72px] h-[calc(100vh-72px)] bg-[#14021C] lg:hidden transition-transform duration-300 ${
+          className={`fixed left-0 right-0 top-[0px] h-[calc(100vh-72px)] bg-[#14021C] lg:hidden transition-transform duration-300 ${
             isMenuOpen ? 'translate-y-0' : '-translate-y-full'
           }`}
         >
           <div className="flex flex-col p-6 gap-6">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-1">
               <NavLink onClick={toggleMenu}>Home</NavLink>
               <NavLink onClick={toggleMenu}>Features</NavLink>
               <NavLink onClick={toggleMenu}>How it works</NavLink>
