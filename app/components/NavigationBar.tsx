@@ -1,67 +1,94 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
-const NavLink = ({ children, href = '#' }: { children: React.ReactNode, href?: string }) => (
-  <Link href={href} className="px-3 py-2 transition-opacity duration-200 hover:opacity-80">
+const NavLink = ({ children, href = '#', onClick }: { children: React.ReactNode, href?: string, onClick?: () => void }) => (
+  <Link 
+    href={href} 
+    onClick={onClick}
+    className="px-3 py-2 text-[16px] text-white transition-all duration-200 hover:opacity-80 font-normal"
+  >
     {children}
   </Link>
 );
 
-const Button = ({ 
-  children, 
-  onClick 
-}: { 
-  children: React.ReactNode;
-  onClick?: () => void;
-}) => (
-  <button
-    onClick={onClick}
-    className="px-3 py-1.5 text-base text-white rounded-md border-2 border-purple-600 border-solid transition-all duration-200 hover:bg-purple-600"
-  >
-    {children}
-  </button>
-);
-
 export const NavigationBar = () => {
-  const handleLogin = () => {
-    // Handle login logic
-    console.log('Login clicked');
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleSignup = () => {
-    // Handle signup logic
-    console.log('Signup clicked');
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="flex justify-between items-center px-8 py-5 w-full bg-stone-950 bg-opacity-40 min-h-[101px] max-md:px-5 max-md:py-5 max-sm:flex-wrap max-sm:justify-between max-sm:p-4">
-      <Image
-        src="/gradius_logo.svg"
-        alt="Gradius Logo"
-        width={209}
-        height={63}
-        className="object-contain"
-        priority
-      />
-      
-      <div className="flex gap-5 items-center text-base leading-6 text-white max-md:gap-2.5 max-sm:hidden">
-        <NavLink>Home</NavLink>
-        <NavLink>Features</NavLink>
-        <NavLink>How it works</NavLink>
-        <NavLink>Pricing</NavLink>
-        <NavLink>FAQ</NavLink>
-      </div>
+    <nav className="fixed top-0 left-0 right-0 z-[100] backdrop-blur-md bg-[#14021C]/30 border-b border-white/[0.08]">
+      <div className="relative max-w-[1920px] mx-auto flex justify-between items-center px-8 py-4 2xl:px-16 xl:px-12 lg:px-8 md:px-6 sm:px-4">
+        {/* Logo */}
+        <Image
+          src="/gradius_logo.svg"
+          alt="Gradius Logo"
+          width={140}
+          height={42}
+          className="object-contain w-auto h-[32px] lg:h-[42px]"
+          priority
+        />
 
-      <div className="flex gap-4 items-center max-sm:ml-auto">
-        <Button onClick={handleLogin}>
-          Log in
-        </Button>
-        <Button onClick={handleSignup}>
-          Sign up for free
-        </Button>
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex gap-8 items-center text-white">
+          <NavLink>Home</NavLink>
+          <NavLink>Features</NavLink>
+          <NavLink>How it works</NavLink>
+          <NavLink>Pricing</NavLink>
+          <NavLink>FAQ</NavLink>
+        </div>
+
+        {/* Mobile Menu Button and Buttons Container */}
+        <div className="flex items-center gap-4">
+          {/* Desktop Buttons */}
+          <div className="hidden lg:flex gap-4 items-center">
+            <button className="px-4 py-1.5 rounded-[8px] border border-[#A436F1] text-white text-[15px] hover:bg-[#A436F1] transition-all duration-300">
+              Login
+            </button>
+            <button className="px-4 py-1.5 rounded-[8px] border border-[#A436F1] bg-[#A436F1] text-white text-[15px] hover:bg-[#8929d1] transition-all duration-300">
+              Sign up for free
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-white p-2 z-[101]"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div 
+          className={`fixed left-0 right-0 top-[72px] h-[calc(100vh-72px)] bg-[#14021C] lg:hidden transition-transform duration-300 ${
+            isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+          }`}
+        >
+          <div className="flex flex-col p-6 gap-6">
+            <div className="flex flex-col gap-6">
+              <NavLink onClick={toggleMenu}>Home</NavLink>
+              <NavLink onClick={toggleMenu}>Features</NavLink>
+              <NavLink onClick={toggleMenu}>How it works</NavLink>
+              <NavLink onClick={toggleMenu}>Pricing</NavLink>
+              <NavLink onClick={toggleMenu}>FAQ</NavLink>
+            </div>
+            
+            <div className="flex flex-col gap-4 pt-6 border-t border-white/[0.08]">
+              <button className="w-full px-4 py-3 rounded-[8px] border border-[#A436F1] text-white text-[15px] hover:bg-[#A436F1] transition-all duration-300">
+                Login
+              </button>
+              <button className="w-full px-4 py-3 rounded-[8px] bg-[#A436F1] text-white text-[15px] hover:bg-[#8929d1] transition-all duration-300">
+                Sign up for free
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );

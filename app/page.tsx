@@ -12,27 +12,24 @@ import ChooseGradius from './components/ChooseGradius';
 
 export default function Home() {
   return (
-    <div className="relative h-screen">
-      {/* Background layer - fills entire screen */}
+    <main className="relative min-h-screen">
+      {/* Background gradient component */}
       <div className="fixed inset-0 -z-10">
-        <MainComponent className="w-full" />
+        <MainComponent className="w-full h-full" />
       </div>
       
-      {/* Foreground content */}
-      <NavigationBar />
-      <Hero/>
-      <DashBoard />
-      <LogoCarousel />
-      <PersonalizedLearning />
-      <NewSection />
-      <HowItWorks />
-      <AdaptiveLearningFeatures />
-      <ChooseGradius />
-      
-      {/* Main content area */}
-      <main className="relative z-20"> 
-        {/* Your additional page content here, if any */}
-      </main>
-    </div>
-  )
+      {/* Content */}
+      <div className="relative z-0">
+        <NavigationBar />
+        <Hero />
+        <DashBoard />
+        <LogoCarousel />
+        <PersonalizedLearning />
+        <NewSection />
+        <HowItWorks />
+        <AdaptiveLearningFeatures />
+        <ChooseGradius />
+      </div>
+    </main>
+  );
 }
