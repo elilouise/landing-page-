@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Dashboard = () => {
   return (
-    <section className="relative flex justify-center mt-[150px] px-4">
+    <section className="relative flex justify-center sm:mt-[150px] mt-[20px] px-4">
       {/* Dashboard SVG */}
       <div className="relative w-full max-w-6xl">
         <Image

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import 'swiper/css/autoplay';       // For Autoplay
+import 'swiper/css/autoplay';
 
 import { Autoplay } from 'swiper/modules';
 
@@ -21,37 +21,55 @@ const logos = [
   { src: "/romulus arg.svg", alt: "Romulus Arg" },
 ];
 
-
 const LogoCarousel = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center mt-[80px] px-4">
+    <section className="relative flex flex-col items-center justify-center sm:mt-[80px] mt-[60px] px-4">
       {/* Title */}
-      <h2 className="text-[12px] font-bold mb-8 font-['Plus Jakarta Sans'] text-[#F3ECFE]">
-        TRUSTED BY UNIVERSITY SOCIETIES GLOBALLY
+      <h2 className="sm:text-[12px] text-[10px] uppercase tracking-wider font-bold mb-12 font-['Plus Jakarta Sans'] text-[#F3ECFE]">
+        Trusted by University Societies Globally
       </h2>
 
       {/* Carousel */}
       <Swiper
         modules={[Autoplay]}
-        slidesPerView={3}
-        spaceBetween={20}
+        slidesPerView={1}
+        spaceBetween={30}
+        loop={true}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 700 }}
-        breakpoints={{
-          640: { slidesPerView: 2, spaceBetween: 15 },
-          1024: { slidesPerView: 4, spaceBetween: 20 },
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
         }}
-        className="w-full max-w-6xl"
+        breakpoints={{
+          // For smaller devices (phones)
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          // For tablets
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          // For desktop
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
+        className="w-full max-w-7xl"
       >
         {logos.map((logo, index) => (
-          <SwiperSlide key={index} className="flex justify-center">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={90}
-              height={90}
-              className="object-contain"
-            />
+          <SwiperSlide key={index} className="flex items-center justify-center">
+            <div className="h-[60px] flex items-center justify-center">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={120}
+                height={60}
+                className="object-contain w-auto h-full max-h-[60px] opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
