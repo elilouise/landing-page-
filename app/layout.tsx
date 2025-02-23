@@ -20,14 +20,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en className={`${jakarta.variable} font-sans`}">
+    <html lang="en" className={`${jakarta.variable} font-sans`}>
       <head>
         <Fonts />
       </head>
       <body className="relative min-h-screen">
-        <div className="relative z-10">
-          {children}
-        </div>
+        {children}  {/* Remove the extra div wrapper */}
       </body>
     </html>
   )

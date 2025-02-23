@@ -36,16 +36,10 @@ export const HowItWorks: React.FC = () => {
     <section className="flex flex-col items-center px-32 pt-24 w-full max-md:px-5 max-md:max-w-full"
       
       style={{
-        backgroundImage: `
-          linear-gradient(to bottom, 
-          rgba(23, 12, 42, 0.4) 0%,
-          rgba(23, 12, 42, 0) 15%
-          ),
-          url('/body_background.svg')
-        `,
+
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        marginTop: "-60px",
+        // marginTop: "-60px",
         paddingTop: "50px",
       }}
     >
@@ -55,25 +49,12 @@ export const HowItWorks: React.FC = () => {
         
         <div className="flex flex-col w-full max-md:max-w-full">
           
-          {/* New Headings */}
-          <div className="mb-8 px-4">
-            <img 
-              src="/Find your perfect study method.svg" // Place your SVG file in public folder
-              alt="Find your perfect Study Method"
-              className="mx-auto"
-              style={{
-                width: 'min(100%, 1200px)', // Set explicit width
-                height: 'auto',
-                transform: 'scale(1)' // Optional zoom
-              }}
-            />
-
-          </div>
+          
 
 
           {/* Animated Heading */}
           <motion.h1 
-            className="[text-shadow:_1px_1px_8px_#a436f1] text-4xl md:text-5xl font-medium tracking-tighter leading-tight text-purple-950"
+            className="[text-shadow:_1px_1px_8px_#a436f1] sm:text-[54px] text-[24px] md:text-5xl font-medium tracking-tighter leading-tight text-white"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-20% 0px" }}
@@ -91,13 +72,13 @@ export const HowItWorks: React.FC = () => {
           </motion.h1>
 
 
-          <p className="self-center mt-6 text-lg tracking-tight leading-none text-neutral-800 max-md:max-w-full">
+          <p className="self-center mt-6 sm:text-[24px] text-[14px] tracking-tight leading-tight text-white max-md:max-w-full">
             Gradius makes you a better student by tailoring everything according to your needs and style. Here's how:
           </p>
         </div>
       </header>
 
-      <div className="flex overflow-hidden flex-col py-36 mt-20 max-w-full w-[1175px] max-md:py-24 max-md:mt-10">
+      <div className="flex overflow-hidden flex-col max-w-full w-[1175px] sm:mt-20 mt-10">
         <StepCard
           stepNumber="1"
           title="Import Your Study Material"

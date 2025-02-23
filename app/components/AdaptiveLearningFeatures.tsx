@@ -29,15 +29,9 @@ const features: FeatureCardProps[] = [
 const AdaptiveLearningFeatures: React.FC = () => {
   return (
     <section
-      className="flex flex-col items-center px-4 py-20 w-full sm:px-8 lg:px-16"
+      className="flex flex-col items-center justify-center px-4 py-20 w-full sm:px-8 lg:px-16"
         style = {{
-        backgroundImage: `
-          linear-gradient(to bottom, 
-          rgba(23, 12, 42, 0.4) 0%,
-          rgba(23, 12, 42, 0) 15%
-          ),
-          url('/body_background.svg')
-        `,
+
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -46,7 +40,7 @@ const AdaptiveLearningFeatures: React.FC = () => {
       <div className="flex flex-col self-center max-w-full text-center w-[846px]">
         <div className="flex flex-col w-full max-md:max-w-full">
           <motion.h1 
-            className="text-6xl font-medium tracking-tighter leading-none text-stone-950 max-md:max-w-full max-md:text-4xl [text-shadow:_1px_1px_8px_#a436f1]"
+            className="text-6xl font-medium tracking-tighter leading-none sm:text-[#0F0F0F] text-white max-md:max-w-full max-md:text-4xl [text-shadow:_1px_1px_8px_#a436f1]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20% 0px" }}
@@ -61,7 +55,7 @@ const AdaptiveLearningFeatures: React.FC = () => {
           </motion.h1>
           
           <motion.p 
-            className="mt-6 text-lg tracking-tight leading-7 text-neutral-800 max-md:max-w-full"
+            className="mt-6 text-lg tracking-tight leading-7 sm:text-[#0F0F0F] text-white max-md:max-w-full"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -79,25 +73,17 @@ const AdaptiveLearningFeatures: React.FC = () => {
 
 
       {/* Grid Layout for Cards */}
-      <div className="grid w-full max-w-screen-xl mx-auto 
-        grid-cols-[repeat(auto-fit,minmax(min(400px,100%),1fr))] 
-        gap-6 p-4
-        sm:gap-8
-        lg:p-0
-        mt-16">
+      <div className="grid w-full max-w-screen-xl mx-auto gap-8 px-4 mt-16
+        grid-cols-1 
+        md:grid-cols-2
+        md:gap-x-8 md:gap-y-12"
+      >
         {features.map((feature, index) => (
           <FeatureCard key={index} {...feature} />
         ))}
       </div>
       
-      {/* Backed by Cognitive Research Section */}
-      <div className="mt-20 w-full flex justify-center">
-        <img
-          src="/Backed by Cognitive Research.svg"
-          alt="Backed by Cognitive Research"
-          className="max-w-[800px] w-full h-auto"
-        />
-      </div>
+      
 
     </section>
   );

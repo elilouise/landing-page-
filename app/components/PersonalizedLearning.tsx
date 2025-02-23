@@ -7,7 +7,7 @@ const PersonalizedLearning = () => {
   return (
     <section 
     
-    className="relative flex flex-col items-center justify-center mt-[205px] px-4"
+    className="relative flex flex-col items-center justify-center sm:mt-[205px] mt-[85px] px-4"
     
     style= {{
         backgroundImage: `
@@ -16,7 +16,7 @@ const PersonalizedLearning = () => {
           rgb(63, 44, 97) 70%
           )
         `,
-        marginBottom: "-400px", // Creates overlap with next section (more negative = more overlap)
+        // marginBottom: "-500px", // Creates overlap with next section (more negative = more overlap)
         paddingBottom: "5px" // Compensate for negative margin
       }}
     
@@ -24,7 +24,7 @@ const PersonalizedLearning = () => {
 
       {/* Heading */}
       <h2
-        className="text-[54px] font-medium leading-[62px] tracking-[-0.02em] text-[#F3ECFE] font-['Plus Jakarta Sans'] drop-shadow-[0_4px_4px_#A436F1] mb-12 text-center"
+        className="sm:text-[54px] text-[24px] font-medium sm:leading-[62px] leading-[32px] tracking-[-0.02em] text-[#F3ECFE] font-['Plus Jakarta Sans'] drop-shadow-[0_4px_4px_#A436F1] mb-12 text-center"
       >
         Own your Exams with Personalized Learning!
       </h2>
